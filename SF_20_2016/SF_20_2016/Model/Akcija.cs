@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SF_20_2016.Model
 {
-public  class Akcija
+    public  class Akcija
     {
         public int Id { get; set; }
         public DateTime DatumPocetka { get; set; }

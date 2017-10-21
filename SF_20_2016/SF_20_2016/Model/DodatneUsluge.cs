@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SF_20_2016.Model
 {
- public class DodatneUsluge
+    public class DodatneUsluge
     {
         public int Id { get; set; }
         public string Naziv { get; set; }

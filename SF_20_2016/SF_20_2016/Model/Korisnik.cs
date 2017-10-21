@@ -11,7 +11,7 @@ namespace SF_20_2016.Model
         Administrator,
         Prodavac
     }
- public class Korisnik
+    public class Korisnik
     {
         public int Id { get; set; }
         public string Ime { get; set; }

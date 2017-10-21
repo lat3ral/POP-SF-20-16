@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SF_20_2016.Model
 {
-public  class ProdajaNamestaja
+    public class ProdajaNamestaja
     {
         public int Id { get; set; }
         public List<Namestaj> NamestajZaProdaju { get; set; }
