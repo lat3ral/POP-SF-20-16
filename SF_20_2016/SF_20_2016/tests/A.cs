@@ -8,16 +8,16 @@ namespace SF_20_2016.tests
 {
     public class A
     {
-        //    private string ime;
+            private string ime;
 
-        //    public string GetIme()
-        //    {
-        //        return this.ime;
-        //    }
-        //    public void SetIme(string ime)
-        //    {
-        //        this.ime = ime;
-        //    }
+            public string GetIme()
+            {
+               return this.ime;
+          }
+            public void SetIme(string ime)
+            {
+               this.ime = ime;
+            }
 
         public string Ime
         {

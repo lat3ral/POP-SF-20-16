@@ -11,7 +11,7 @@ namespace SF_20_2016.Model
         public int Id { get; set; }
         public string Naziv { get; set; }
         public string Sifra { get; set; }
-        public string Cena { get; set; }
+        public double Cena { get; set; }
         public int KolicinaUMagacinu { get; set; }
         public Akcija Akcija { get; set; }
         public TipNamestaja TipNamestaja { get; set; }

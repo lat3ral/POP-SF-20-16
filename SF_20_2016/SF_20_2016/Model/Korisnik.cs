@@ -18,6 +18,7 @@ namespace SF_20_2016.Model
         public string Prezime { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
+        public string TipKorisnika { get; set; }
         public bool Obrisan { get; set; }
     }
 }

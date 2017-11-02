@@ -10,7 +10,7 @@ namespace SF_20_2016.Model
     {
         public int Id { get; set; }
         public string Naziv { get; set; }
-        public string Cena { get; set; }
+        public double Cena { get; set; }
         public bool Obrisan { get; set; }
     }
 }
