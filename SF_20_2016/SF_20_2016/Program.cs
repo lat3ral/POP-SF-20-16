@@ -46,7 +46,7 @@ namespace SF_20_2016
             var s1 = new Salon
             {
                 Id = 1,
-                Naziv = "ayy lmao",
+                Naziv = "Salon1",
                 Adresa = "Lenke Dundjerski 32a",
                 BrojZiroRacuna = "30213941",
                 Email = "ritopls@nesto.com",
@@ -625,15 +625,15 @@ namespace SF_20_2016
                 string password = Console.ReadLine();
 
                 Console.WriteLine("Unesite tip korisnika od ponudjenih korisnika: ");
-                Console.WriteLine("Lud");
-                Console.WriteLine("Niza klasa");
+                Console.WriteLine("crazy");
+                Console.WriteLine("wow");
                 if (izbor == 2)
                 {
                     try
                     {
 
                         string tip = Console.ReadLine();
-                        if (tip.Equals("Lud") || tip.Equals("Niza klasa"))
+                        if (tip.Equals("crazy") || tip.Equals("wow"))
                         {
                             var k = new Korisnik
                             {
@@ -663,7 +663,7 @@ namespace SF_20_2016
                     {
 
                         string tip = Console.ReadLine();
-                        if (tip.Equals("Lud") || tip.Equals("Niza klasa"))
+                        if (tip.Equals("crazy") || tip.Equals("wow"))
                         {
                             foreach (Korisnik n in korisnici)
                             {
