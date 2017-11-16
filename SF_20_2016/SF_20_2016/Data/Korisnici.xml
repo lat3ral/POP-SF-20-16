@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Korisnik>
+    <Ime>Prvi</Ime>
+    <Prezime>Korisnik</Prezime>
+    <Username>k1</Username>
+    <Password>korisnik1</Password>
+    <Tip_Korisnika>crazy</Tip_Korisnika>
+  </Korisnik>
+  <Korisnik>
+    <Ime>Drugi</Ime>
+    <Prezime>Korisnik</Prezime>
+    <Username>k2</Username>
+    <Password>korisnik2</Password>
+    <Tip_Korisnika>wow</Tip_Korisnika>
+  </Korisnik>
+</ArrayOfKorisnik>

@@ -1,5 +1,6 @@
 ﻿using SF_20_2016.Model;
 using SF_20_2016.tests;
+using SF_20_2016.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,25 @@ namespace SF_20_2016
     class Program
     {
 
-        public static List<TipNamestaja> tip_namestaja = new List<TipNamestaja>();
-        public static List<Namestaj> namestaj = new List<Namestaj>();
+        //public static List<TipNamestaja> tip_namestaja = new List<TipNamestaja>();
+       // public static List<Namestaj> namestaj = new List<Namestaj>();
         public static List<Korisnik> korisnici = new List<Korisnik>();
+        //public static List<Akcija> akcije = new List<Akcija>();
         static void Main(string[] args)
         {
-            var tn1 = new TipNamestaja
+           /* var listaTipovaNamestaja = GenericSerializer.Deserialize<TipNamestaja>("tipovi_namestaja.xml");
+            var noviTipNamestaja = new TipNamestaja()
+            {
+                Naziv = "Ugaona"
+            };
+
+            listaTipovaNamestaja.Add(noviTipNamestaja);
+            Projekat.Instance.TipoviNamestaja = listaTipovaNamestaja;
+            Console.WriteLine("Finished serialization...");
+            Console.ReadLine();*/
+
+
+          /*  var tn1 = new TipNamestaja
             {
                 Id = 1,
                 Naziv = "krevet",
@@ -42,7 +56,7 @@ namespace SF_20_2016
 
 
 
-            };
+            };  */
             var s1 = new Salon
             {
                 Id = 1,
@@ -56,52 +70,82 @@ namespace SF_20_2016
                 WebSajt = "nema"
 
             };
-            var tn2 = new TipNamestaja
-            {
-                Id = 2,
-                Naziv = "plakar",
-                Obrisan = false
-            };
-            var tn3 = new TipNamestaja
-            {
-                Id = 3,
-                Naziv = "fotelja",
-                Obrisan = false
-            };
-            var n1 = new Namestaj
-            {
-                Id = 1,
-                Cena = 99.99,
-                Naziv = "DM krevet",
-                KolicinaUMagacinu = 12,
-                TipNamestaja = tn1
-            };
-            var n2 = new Namestaj
-            {
-                Id = 2,
-                Cena = 69.99,
-                Naziv = "Plakar od iverice",
-                KolicinaUMagacinu = 4,
-                TipNamestaja = tn2
-            };
-            var n3 = new Namestaj
-            {
-                Id = 3,
-                Cena = 420.00,
-                Naziv = "SkupaFotelja",
-                KolicinaUMagacinu = 15,
-                TipNamestaja = tn3
-            };
-            tip_namestaja.Add(tn1);
-            tip_namestaja.Add(tn2);
-            tip_namestaja.Add(tn3);
+            /* var tn2 = new TipNamestaja
+             {
+                 Id = 2,
+                 Naziv = "plakar",
+                 Obrisan = false
+             };
+             var tn3 = new TipNamestaja
+             {
+                 Id = 3,
+                 Naziv = "fotelja",
+                 Obrisan = false
+             };
 
-            namestaj.Add(n1);
-            namestaj.Add(n2);
-            namestaj.Add(n3);
+             //var listaTipovaNamestaja = new List<TipNamestaja>();
+             listaTipovaNamestaja.Add(tn1);
+             listaTipovaNamestaja.Add(tn2);
 
-            korisnici.Add(k1);
-            korisnici.Add(k2);
+             GenericSerializer.Serialize<TipNamestaja>("tipovi_namestaja.xml", listaTipovaNamestaja);
+             Console.WriteLine("Finished Serilization...");
+
+             var n1 = new Namestaj
+             {
+                 Id = 1,
+                 Cena = 99.99,
+                 Naziv = "DM krevet",
+                 KolicinaUMagacinu = 12,
+                 TipNamestaja = tn1
+             };
+
+             var listaNamestaja = new List<Namestaj>();
+             listaNamestaja.Add(n1);
+
+             GenericSerializer.Serialize<Namestaj>("namestaj.xml", listaNamestaja);
+             Console.WriteLine("Finished serilization...");
+
+             var n2 = new Namestaj
+             {
+                 Id = 2,
+                 Cena = 69.99,
+                 Naziv = "Plakar od iverice",
+                 KolicinaUMagacinu = 4,
+                 TipNamestaja = tn2
+             };
+             var n3 = new Namestaj
+             {
+                 Id = 3,
+                 Cena = 420.00,
+                 Naziv = "SkupaFotelja",
+                 KolicinaUMagacinu = 15,
+                 TipNamestaja = tn3
+             };
+             tip_namestaja.Add(tn1);
+             tip_namestaja.Add(tn2);
+             tip_namestaja.Add(tn3);
+
+             namestaj.Add(n1);
+             namestaj.Add(n2);
+             namestaj.Add(n3);
+
+             korisnici.Add(k1);
+             korisnici.Add(k2);
+             var ak1 = new Akcija {
+                 Datum_Pocetka = new DateTime(2017, 10, 9),
+                 Datum_Zavrsetka = new DateTime(2017, 10, 16),
+                 Id = 1,
+                 Popust = 10.99m
+             };
+             akcije.Add(ak1);
+             RadSaPodacima.Instance.akcije = akcije;
+            
+             RadSaPodacima.Instance.tipovi_Namestaja = tip_namestaja;
+             RadSaPodacima.Instance.korisnici = korisnici;
+             RadSaPodacima.Instance.namestaji = namestaj;
+
+
+              */
 
             Console.WriteLine("  .::Dobrodosli u  " + s1.Naziv + "::.");
             LogIn();
@@ -117,24 +161,27 @@ namespace SF_20_2016
             int izbor = 0;
             try
             {
-                string str_izbor = Console.ReadLine();
-                izbor = int.Parse(str_izbor);
-                if (izbor == 1)
+                do
                 {
-                    Console.WriteLine("  Izabrali ste rad sa namestajem");
-                    GlavniMeni();
+                    string str_izbor = Console.ReadLine();
+                    izbor = int.Parse(str_izbor);
+
                 }
-                else if (izbor == 2)
+                while (izbor < 1 || izbor > 2);
+                switch (izbor)
                 {
-                    Console.WriteLine("  Izabrali ste rad sa korisnicima");
-                    GlavniMeni2();
-                }
-                else if (izbor < 1 || izbor > 2)
-                {
-                    Console.WriteLine("  E naopako");
-                    Meni();
+
+                    case 1:
+                        Console.WriteLine("  Izabrali ste rad sa namestajem");
+                        GlavniMeni();
+                        break;
+                    case 2:
+                        Console.WriteLine("  Izabrali ste rad sa korisnicima");
+                        GlavniMeni2();
+                        break;
                 }
             }
+
             catch (Exception ex)
             {
                 Console.WriteLine("  Samo broj ffs");
@@ -179,36 +226,34 @@ namespace SF_20_2016
             int izbor = 0;
             try
             {
-                while (izbor < 1 || izbor > 6)
+                do
                 {
                     string st_izbor = Console.ReadLine();
                     izbor = int.Parse(st_izbor);
                 }
-                if (izbor == 1)
+                while (izbor < 1 || izbor > 6);
+                switch (izbor)
                 {
-                    Prikaz_Namestaja();
-                }
-                else if (izbor == 2)
-                {
-                    Console.WriteLine("  Izabrali ste dodavanje namestaja: ");
-                    Novi_izmena(2);
-                }
-                else if (izbor == 3)
-                {
-                    Console.WriteLine("  Izabrali ste izmenu namestaja: ");
-                    Novi_izmena(3);
-                }
-                else if (izbor == 4)
-                {
-                    Brisanje_namestaja();
-                }
-                else if (izbor == 5)
-                {
-                    Meni();
-                }
-                else if (izbor == 6)
-                {
-                    izlaz();
+                    case 1:
+                        Prikaz_Namestaja();
+                        break;
+                    case 2:
+                        Console.WriteLine("  Izabrali ste dodavanje namestaja: ");
+                        Novi_izmena(2);
+                        break;
+                    case 3:
+                        Console.WriteLine("  Izabrali ste izmenu namestaja: ");
+                        Novi_izmena(3);
+                        break;
+                    case 4:
+                        Brisanje_namestaja();
+                        break;
+                    case 5:
+                        Meni();
+                        break;
+                    case 6:
+                        izlaz();
+                        break;
                 }
             }
             catch (Exception ex)
@@ -282,6 +327,7 @@ namespace SF_20_2016
                     {
                         Console.WriteLine("Uspesno ste obrisali " + n.Ime + " " + n.Prezime);
                         korisnici.Remove(n);
+                        RadSaPodacima.Instance.korisnici = korisnici;
                         GlavniMeni2();
                     }
                 }
@@ -300,6 +346,7 @@ namespace SF_20_2016
 
 
             Console.WriteLine("  Izabrali ste prikaz namestaja: ");
+            var korisnici = RadSaPodacima.Instance.korisnici;
             foreach (Korisnik n in korisnici)
             {
                 Console.WriteLine("|Ine: " + n.Ime + "|" + "Prezime: " + n.Prezime + " | " + "Username: "
@@ -311,6 +358,7 @@ namespace SF_20_2016
 
         private static void Brisanje_namestaja()
         {
+            var namestaj = RadSaPodacima.Instance.namestaji;
             Console.WriteLine("Unesite Id namestaja koji zelite da obrisete: ");
             foreach (Namestaj n in namestaj)
             {
@@ -327,6 +375,7 @@ namespace SF_20_2016
                     {
                         Console.WriteLine("Uspesno ste obrisali " + n.Naziv);
                         namestaj.Remove(n);
+                        RadSaPodacima.Instance.namestaji = namestaj;
                         GlavniMeni();
                     }
                 }
@@ -353,6 +402,7 @@ namespace SF_20_2016
             ///            funkcija koja prima izbor iz menija, i prosledjuje ga metodi koja
             ///            u zavisnosti od izbora ili daje izmenu namestaja ili dodavanje novog.
             int izbor = br;
+            var namestaj = RadSaPodacima.Instance.namestaji;
             if (izbor == 2)
             {
                 Console.WriteLine("   ");
@@ -422,6 +472,8 @@ namespace SF_20_2016
 
             int id = kd;
             int izborr = izbor;
+            var tip_namestaja = RadSaPodacima.Instance.tipovi_Namestaja;
+            var namestaj = RadSaPodacima.Instance.namestaji;
             try
             {
 
@@ -469,6 +521,7 @@ namespace SF_20_2016
 
                                 };
                                 namestaj.Add(nam);
+                                RadSaPodacima.Instance.namestaji = namestaj;
                                 Console.WriteLine("Uspesno ste dodali namestaj!");
                                 GlavniMeni();
                             }
@@ -500,11 +553,10 @@ namespace SF_20_2016
                                         gn.Naziv = naziv;
                                         gn.TipNamestaja = n;
 
-                                        Console.WriteLine("Uspesno ste izmenili namestaj!");
-                                        GlavniMeni();
+                                        
                                     }
                                 }
-
+                                RadSaPodacima.Instance.namestaji = namestaj;
                                 Console.WriteLine("Uspesno ste izmenili namestaj!");
                                 GlavniMeni();
                             }
@@ -534,6 +586,7 @@ namespace SF_20_2016
             ///            Funkcija koja prolazi kroz listu sa objektima i prikazuje njihove atribute
 
             Console.WriteLine("  Izabrali ste prikaz namestaja: ");
+            var namestaj = RadSaPodacima.Instance.namestaji;
             foreach (Namestaj n in namestaj)
             {
                 Console.WriteLine("|Id: " + n.Id + "|" + "Naziv: " + n.Naziv + " | " + "Kolicina: " + n.KolicinaUMagacinu + "|" + "Cena: " + n.Cena + "|" + "Tip namestaja: " + n.TipNamestaja.Naziv + "|");
@@ -550,6 +603,7 @@ namespace SF_20_2016
             {
                 Console.WriteLine("   ");
                 Console.WriteLine("  Unesite Username novog korisnika: ");
+                var korisnici = RadSaPodacima.Instance.korisnici;
 
                 string username = "";
 
@@ -612,6 +666,8 @@ namespace SF_20_2016
         {
             string username = user;
             int izbor = v;
+            var korisnici = RadSaPodacima.Instance.korisnici;
+
 
             try
             {
@@ -646,6 +702,7 @@ namespace SF_20_2016
 
                             };
                             korisnici.Add(k);
+                            RadSaPodacima.Instance.korisnici = korisnici;
                             Console.WriteLine("uspesno ste dodali korisnika");
                             GlavniMeni2();
                         }
@@ -685,6 +742,7 @@ namespace SF_20_2016
 
                     catch (Exception ex)
                     {
+                        RadSaPodacima.Instance.korisnici = korisnici;
                         Console.WriteLine("ne postoji taj tip korisnika!");
                         Unos_vrednosti_korisnika(username, izbor);
                     }
@@ -702,30 +760,43 @@ namespace SF_20_2016
         }
         private static void LogIn()
         {
-            Console.WriteLine("Molim unesite vase korisnicko ime: ");
-            string unos1 = Console.ReadLine();
-            foreach (Korisnik k in korisnici)
+            int br = 0;
+            string ime = "";
+            string prezime = "";
+            do
             {
-                if (unos1.Equals(k.KorisnickoIme))
-                {
-                    Console.WriteLine("Sada unesite lozinku: ");
-                    string unos2 = Console.ReadLine();
-                    if (unos2.Equals(k.Lozinka))
-                    {
-                        Console.WriteLine("BRAVO! ulogovani ste kao: " + k.Ime + " " + k.Prezime);
-                        Meni();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Podaci koje ste uneli nisu ispravni");
-                        LogIn();
-                    }
-                }
-            }
-            Console.WriteLine("Nema takvog korisnika!");
-            LogIn();
+                Console.WriteLine("Molim unesite vase korisnicko ime: ");
+                string unos1 = Console.ReadLine();
+                Console.WriteLine("Molim unesite vasu lozinku");
+                string unos2 = Console.ReadLine();
+                var korisnici = RadSaPodacima.Instance.korisnici;
 
+                foreach (Korisnik n in korisnici)
+                {
+                    if (unos1.Equals(n.KorisnickoIme) && unos2.Equals(n.Lozinka))
+                    {
+                        br += 1;
+                        ime = n.Ime;
+                        prezime = n.Prezime;
+                    }
+
+                }
+
+            }
+            while (br != 1);
+
+            Console.WriteLine("BRAVO! ulogovani ste kao: " + ime + " " + prezime);
+            Meni();
         }
+
+        //var listaNamestaja = GenericSerializer.Deserialize<Namestaj>("namestaj.xml");
+
+
     }
+
+    
+    
+        
+    
 
 }
