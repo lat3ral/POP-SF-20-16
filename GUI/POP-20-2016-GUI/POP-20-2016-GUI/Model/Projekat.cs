@@ -63,6 +63,7 @@ namespace POP_20_2016_GUI.Model
                 return this.akcija;
             }
             set
+
             {
                 this.akcija = value;
                 GenericSerializer.Serialize<Akcija>("Akcija.xml", this.akcija);
